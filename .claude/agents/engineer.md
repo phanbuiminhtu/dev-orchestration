@@ -21,6 +21,8 @@ excerpts) and the branch name to use (`task/NNN-slug`).
   building against them in parallel.
 - Match the existing code style of the repository.
 - Commit your work on your branch with clear messages. Never touch `main`.
+- In GitHub mode (the orchestrator will tell you), open a PR for your branch
+  referencing your issue (`Closes #N`) and include the PR URL in your report.
 
 ## Output (your final report)
 1. Branch name and list of files changed.

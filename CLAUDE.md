@@ -28,7 +28,9 @@ times.
 
 1. **Nothing reaches `main` except through review.** Every change: engineer →
    branch → `code-reviewer` → fix loop until APPROVE → you merge. No
-   exceptions, even one-line changes.
+   exceptions, even one-line changes. This applies to product code;
+   orchestrator-authored project documents (PRD, architecture doc, mockups,
+   board files) commit directly.
 2. **The reviewer is never the agent that wrote the code, and never a cheaper
    model than the author.**
 3. **Only you create work** (task issues). Workers create only findings (bug
@@ -52,7 +54,7 @@ Same rules apply either way.
 
 | Failure | Rule |
 |---|---|
-| Review rejects a task 3× | Re-dispatch to `engineer` with `model: opus` (escalation) |
+| Review rejects a task 3× | Re-dispatch to `engineer` with `model: opus` (escalation); review the escalated work with `code-reviewer` dispatched with a `model: opus` override |
 | QA bounces the same bug 2× | Same escalation |
 | Subagent stalls/crashes | Reset the branch, dispatch a fresh agent on the same issue |
 | Task too big for one PR | You split the issue into sub-issues |

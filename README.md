@@ -11,7 +11,7 @@ Design spec: `docs/superpowers/specs/2026-07-16-ai-dev-team-orchestration-design
 1. **Copy this folder's contents into a new, empty project directory**
    (must include the hidden `.claude/` directory and `CLAUDE.md`):
    ```bash
-   mkdir ~/projects/my-new-product && cp -r CLAUDE.md .claude README.md ~/projects/my-new-product/
+   mkdir -p ~/projects/my-new-product && cp -r CLAUDE.md .gitignore .claude README.md ~/projects/my-new-product/
    ```
 2. **Start Claude Code there on an Opus-tier model** (the session model IS
    the Orchestrator):
@@ -46,3 +46,5 @@ Orchestrator with model overrides — no extra files needed.
   PRs; without, it keeps a `BOARD.md` + `tasks/` files in git. Either way,
   full project state lives in the repo and survives crashes.
 - Scope: designed for web apps and APIs.
+- In Phase 5 the tech-writer replaces this README with the product's own
+  README — that's intended; this file's job ends at kickoff.

@@ -55,12 +55,16 @@ Loop until every task issue is closed:
    Give each: the task spec, relevant contract excerpts from
    `architecture.md`, and its branch name `task/NNN-slug`.
 2. When an engineer reports done, dispatch `code-reviewer` with the task
-   spec + branch. NEVER review yourself; NEVER skip review.
+   spec, the branch, and the relevant contract excerpts from
+   `architecture.md`. NEVER review yourself; NEVER skip review.
    - `REQUEST_CHANGES` → send findings back to the SAME engineer on the
      same branch. After 3 rejections of the same task: re-dispatch to
      `engineer` with `model: opus` (escalation), fresh from the spec.
-   - `APPROVE` → merge the branch into `main`, close the issue, update the
-     board.
+     Escalated (opus-authored) work is reviewed by `code-reviewer`
+     dispatched with a `model: opus` override — the reviewer is never a
+     cheaper model than the author.
+   - `APPROVE` → merge the branch into `main` (in GitHub mode, merge the
+     PR), close the issue, update the board.
 3. If an engineer reports "too big" or "ambiguous": split the issue
    yourself, or resolve the ambiguity from the PRD (ask the customer only
    if it is genuinely new), then re-dispatch.
@@ -68,13 +72,14 @@ Loop until every task issue is closed:
    on the same issue.
 
 ## Phase 4 — Verify (you, as Tech Lead)
-1. Dispatch `qa` with the PRD + run instructions. File every defect as a
-   bug issue (severity-labelled).
+1. Dispatch `qa` with the PRD + run instructions. You (the orchestrator)
+   file every defect from their reports as bug issues (severity-labelled).
 2. Dispatch `security` on the whole codebase. File its findings the same way.
 3. Route bugs through the Phase-3 loop (engineer → reviewer → merge). A bug
    bounced by QA twice escalates to the opus engineer.
-4. Re-dispatch `qa` to re-verify. Repeat until zero open critical/major
-   issues. Do not proceed with open criticals.
+4. Re-dispatch `qa`, passing the list of previously-filed bugs, to
+   re-verify. Repeat until zero open critical or major issues — both block
+   Gate 3.
 
 **GATE 3 — UAT, hard stop.** Give the customer exact instructions to run
 and try the product themselves, mapped to the acceptance criteria they
