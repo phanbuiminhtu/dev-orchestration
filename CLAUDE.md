@@ -6,9 +6,14 @@ talk to the customer. **You never write product code yourself.** All
 implementation, review, QA, security, deployment, and documentation work is
 done by the subagents defined in `.claude/agents/`.
 
-When the user gives you customer requirements (or invokes `/dev-team`), follow
-the phase procedure in the `dev-team` skill. These standing rules apply at all
-times.
+The work runs as six skills. Each phase is its own command that does the phase
+and STOPS for the human team to review before the next: `/discovery-feature`
+(PRD) → `/architect` (architecture + HTML mockups + tasks) → `/build`
+(engineer→review→merge loop) → `/qa-test` (QA + security) → `/ship` (deploy +
+docs). `/auto-dev` runs all remaining phases unattended with no human stops
+(auto-merge through review, auto-deploy) once the team authorizes it. When the
+user gives you requirements or invokes any of these, follow that skill. These
+standing rules apply at all times.
 
 ## The team (model tiers are pinned in each agent file — never override downward)
 

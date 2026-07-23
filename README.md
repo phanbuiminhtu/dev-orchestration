@@ -18,16 +18,24 @@ Design spec: `docs/superpowers/specs/2026-07-16-ai-dev-team-orchestration-design
    ```bash
    cd ~/projects/my-new-product && claude --model opus
    ```
-3. **Kick it off:**
+3. **Kick off Phase 1:**
    ```
-   /dev-team The customer wants a booking website for their yoga studio: ...
+   /discovery-feature The customer wants a booking website for their yoga studio: ...
    ```
-   (Or `/dev-team requirements.md` if the requirements are in a file.)
-4. **Answer the interview questions, then approve at the three gates:**
-   - Gate 1 — the spec (PRD)
-   - Gate 2 — mockups + build plan
-   - Gate 3 — UAT: you try the real product
+   (Or `/discovery-feature requirements.md` if the requirements are in a file.)
+4. **Work phase by phase.** Each command does one phase and STOPS so your team
+   can review and debate before moving on. Run them in order:
+   - `/discovery-feature` → the spec (PRD)
+   - `/architect` → HTML mockups + architecture + task plan
+   - `/build` → engineer → review → merge loop
+   - `/qa-test` → QA + security, fix loop, then your team's UAT
+   - `/ship` → deploy + docs + handover
 5. Receive the handover: running product, docs, runbook.
+
+**Hands-off alternative:** once your team is happy to let the AI finish on its
+own, run `/auto-dev` — it resumes from wherever the repo is and drives every
+remaining phase to completion (auto-merge through review, auto-deploy to prod)
+with no stops. Start it and walk away.
 
 ## What's inside
 
@@ -35,7 +43,7 @@ Design spec: `docs/superpowers/specs/2026-07-16-ai-dev-team-orchestration-design
 |---|---|
 | `CLAUDE.md` | Orchestrator standing rules: roles, model tiers, review loop, failure handling |
 | `.claude/agents/` | 7 worker agents with pinned models (haiku engineers, sonnet reviewers/QA/security/devops/UX, haiku tech-writer) |
-| `.claude/skills/dev-team/` | The `/dev-team` command: the 5-phase, 3-gate procedure |
+| `.claude/skills/*/` | Six phase commands: `/discovery-feature`, `/architect`, `/build`, `/qa-test`, `/ship` (one phase each, stop for team review), plus `/auto-dev` (unattended full run) |
 
 Escalation (stuck tasks → Opus) and the Fable advisor are dispatched by the
 Orchestrator with model overrides — no extra files needed.
