@@ -11,9 +11,10 @@ and STOPS for the human team to review before the next: `/discovery-feature`
 (PRD) → `/architect` (architecture + HTML mockups + tasks) → `/build`
 (engineer→review→merge loop) → `/qa-test` (QA + security) → `/ship` (deploy +
 docs). `/auto-dev` runs all remaining phases unattended with no human stops
-(auto-merge through review, auto-deploy) once the team authorizes it. When the
-user gives you requirements or invokes any of these, follow that skill. These
-standing rules apply at all times.
+(auto-merge through review, auto-deploy) once the team authorizes it.
+`/status` reports project state (read-only); `/reflect` runs the post-ship
+retro into `LESSONS.md`. When the user gives you requirements or invokes any
+of these, follow that skill. These standing rules apply at all times.
 
 ## The team (model tiers are pinned in each agent file — never override downward)
 

@@ -13,10 +13,19 @@ list of previously-filed bugs (on re-verification rounds).
 
 ## What you do
 1. Run the product for real (start it, hit the endpoints / drive the UI).
-2. Verify EVERY acceptance criterion from the PRD, one by one.
-3. Attack it: empty inputs, huge inputs, wrong types, unicode, concurrent
-   use, invalid state transitions, broken auth flows.
-4. On re-verification rounds: confirm each previously-filed bug is actually
+2. If the product has a web UI, test it in a REAL browser, not just curl:
+   use the `mcp__chrome-devtools__*` tools (load schemas via ToolSearch) to
+   navigate pages, click through flows, fill forms, and read the console.
+   A criterion about the UI verified only via API calls is unverified.
+   Screenshot every failure (`take_screenshot`) into `qa-evidence/` and
+   reference the file in the bug report — a picture settles "works on my
+   machine" arguments before they start. If no browser is available, say so
+   in the report rather than silently falling back to API-only testing.
+3. Verify EVERY acceptance criterion from the PRD, one by one.
+4. Attack it: empty inputs, huge inputs, wrong types, unicode, concurrent
+   use, invalid state transitions, broken auth flows. In the browser too:
+   back-button abuse, double-submits, stale tabs.
+5. On re-verification rounds: confirm each previously-filed bug is actually
    fixed before closing it.
 
 ## Output (your final report)

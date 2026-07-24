@@ -43,7 +43,7 @@ with no stops. Start it and walk away.
 |---|---|
 | `CLAUDE.md` | Orchestrator standing rules: roles, model tiers, review loop, failure handling |
 | `.claude/agents/` | 7 worker agents with pinned models (haiku engineers, sonnet reviewers/QA/security/devops/UX, haiku tech-writer) |
-| `.claude/skills/*/` | Six phase commands: `/discovery-feature`, `/architect`, `/build`, `/qa-test`, `/ship` (one phase each, stop for team review), plus `/auto-dev` (unattended full run) |
+| `.claude/skills/*/` | Six phase commands: `/discovery-feature`, `/architect`, `/build`, `/qa-test`, `/ship` (one phase each, stop for team review), plus `/auto-dev` (unattended full run), `/status` (read-only report), `/reflect` (post-ship retro → `LESSONS.md`) |
 
 Escalation (stuck tasks → Opus) and the Fable advisor are dispatched by the
 Orchestrator with model overrides — no extra files needed.
